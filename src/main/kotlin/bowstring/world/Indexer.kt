@@ -8,15 +8,7 @@ class Indexer<E : Mob>(val capacity: Int, val minIndex: Int = 0) : Iterable<E> {
 		private set
 	private var highest = 0
 
-	private val iterator = object : Iterator<E> {
-
-		private var pointer = minIndex
-
-		override fun next() = arr[pointer++] as E
-
-		override fun hasNext() = size > 0 && pointer <= highest
-
-	}
+	private val iterator = IndexerIterator()
 
 	fun nextIndex(): Int {
 		for (i in minIndex..arr.size) if (arr[i] == null) return i
@@ -63,6 +55,19 @@ class Indexer<E : Mob>(val capacity: Int, val minIndex: Int = 0) : Iterable<E> {
 		return false
 	}
 
-	override fun iterator() = iterator
+	override fun iterator(): Iterator<E> {
+		iterator.pointer = 0 // resets pointer on each call
+		return iterator
+	}
+
+	private inner class IndexerIterator : Iterator<E> {
+
+		internal var pointer = minIndex
+
+		override fun next() = arr[pointer++] as E
+
+		override fun hasNext() = size > 0 && pointer <= highest
+
+	}
 
 }
