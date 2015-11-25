@@ -9,6 +9,8 @@ import io.netty.handler.codec.*
 @Sharable
 internal object Encoder : MessageToByteEncoder<Packet>() {
 
-	override fun encode(ctx: ChannelHandlerContext, msg: Packet, out: ByteBuf) = encode(msg, out)
+	override fun encode(ctx: ChannelHandlerContext, msg: Packet, out: ByteBuf) {
+		Packets.encode(msg, out)
+	}
 
 }
