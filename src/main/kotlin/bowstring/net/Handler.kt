@@ -36,7 +36,7 @@ internal class Handler : ChannelHandlerAdapter() {
 	}
 
 	override fun exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {
-		ctx.channel().close()
+		ctx.close()
 	}
 
 }
