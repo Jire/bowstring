@@ -47,13 +47,8 @@ class Indexer<E : Mob>(val capacity: Int, val minIndex: Int = 0) : Iterable<E> {
 		}
 	}
 
-	fun contains(element: E): Boolean {
-		for (e in this) {
-			if (e.equals(element))
-				return true
-		}
-		return false
-	}
+	fun contains(element: E) =
+			null == firstOrNull { element.equals(it) }
 
 	override fun iterator(): Iterator<E> {
 		iterator.pointer = 0 // resets pointer on each call
