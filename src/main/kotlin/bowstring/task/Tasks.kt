@@ -4,7 +4,7 @@ import java.util.*
 
 private val tasks = ArrayDeque<Task>()
 
-fun process() {
+fun processTasks() {
 	val iterator = tasks.iterator()
 	while (iterator.hasNext()) {
 		val task = iterator.next()

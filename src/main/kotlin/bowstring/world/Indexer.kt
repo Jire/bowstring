@@ -15,6 +15,7 @@ class Indexer<E : Mob>(val capacity: Int, val minIndex: Int = 0) : Iterable<E> {
 		override fun next() = arr[pointer++] as E
 
 		override fun hasNext() = size > 0 && pointer <= highest
+
 	}
 
 	fun nextIndex(): Int {
