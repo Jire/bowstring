@@ -31,7 +31,7 @@ object Packets {
 	}
 
 	fun register() {
-		val ref = Reflections("bowstring.packet") // get this from
+		val ref = Reflections(javaClass.`package`.name)
 		for (pe in ref.getSubTypesOf(PacketEncoder::class.java)) {
 			val gen = TypeResolver.resolveRawArgument(PacketEncoder::class.java, pe)
 			encoders.put(gen, pe.kotlin.objectInstance as PacketEncoder<*>)
