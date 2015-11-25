@@ -10,7 +10,7 @@ import java.util.concurrent.Executors.*
 const val CYCLE_MS = 600L
 
 fun main(args: Array<String>) {
-	Packets.registerPackets()
+	Packets.register()
 	newSingleThreadScheduledExecutor().scheduleAtFixedRate({
 		Tasks.process()
 		World.process()
