@@ -11,7 +11,7 @@ val ATTR_CLIENT = AttributeKey.valueOf<Client>("client")
 internal class Handler : ChannelHandlerAdapter() {
 
 	override fun handlerRemoved(ctx: ChannelHandlerContext) {
-		ctx.channel().attr(ATTR_CLIENT).get().destroy()
+		ctx.attr(ATTR_CLIENT).get().destroy()
 		super.handlerRemoved(ctx)
 	}
 
@@ -21,7 +21,7 @@ internal class Handler : ChannelHandlerAdapter() {
 	}
 
 	override fun channelRead(ctx: ChannelHandlerContext, msg: Any) {
-		val client = ctx.channel().attr(ATTR_CLIENT).get()
+		val client = ctx.attr(ATTR_CLIENT).get()
 		when (msg) {
 			is Handshake -> client.write(HandshakeResponse(msg.serverKey)).flush()
 			is Login -> {

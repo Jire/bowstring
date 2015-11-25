@@ -9,6 +9,8 @@ object World {
 	private val players = Indexer<Player>(PLAYER_CAPACITY)
 
 	fun process() {
+
+		players.forEach { it.process() }
 		for (player in players) player.process()
 	}
 
