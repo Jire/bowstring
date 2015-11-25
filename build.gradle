@@ -14,7 +14,6 @@ configurations {
 }
 
 tasks.withType(JavaExec) {
-    jvmArgs "-Xmx1024m -Xms1024m -server"
     jvmArgs "-javaagent:${configurations.quasar.iterator().next()}"
 }
 
