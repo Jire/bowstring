@@ -17,7 +17,7 @@ internal class Decoder : ByteToMessageDecoder() {
 		while (buf.isReadable) {
 			val id = buf.readUnsignedByte().toInt()
 			println("Received packet ID $id")
-			val packet = decode(id, client, buf)
+			val packet = Packets.decode(id, client, buf)
 			out.add(packet as Any)
 			println("Received packet $packet")
 		}
